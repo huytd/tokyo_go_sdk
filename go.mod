@@ -1,4 +1,4 @@
-module github.com/ledongthuc/tokyo_go_sdk
+module github.com/huytd/tokyo_go_sdk
 
 go 1.16
 

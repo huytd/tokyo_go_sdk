@@ -6,7 +6,7 @@ import (
 	"log"
 	"time"
 
-	tokyo "github.com/ledongthuc/tokyo_go_sdk"
+	tokyo "github.com/huytd/tokyo_go_sdk"
 )
 
 var server = flag.String("server", "", "server host")
