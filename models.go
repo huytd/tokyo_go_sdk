@@ -27,6 +27,7 @@ type StateEvent struct {
 
 type GameInfo struct {
 	Bounds     []float64        `json:"bounds"`
+	Items      Items            `json:"items"`
 	Players    Players          `json:"players"`
 	Bullets    Bullets          `json:"bullets"`
 	Dead       Dead             `json:"dead"`
@@ -101,6 +102,14 @@ func NewFireCommand() FireCommand {
 }
 
 /* Shared model */
+
+type Items []Item
+
+type Item struct {
+	ID       int64   `json:"id"`
+	X        float64 `json:"x"`
+	Y        float64 `json:"y"`
+}
 
 type Players []Player
 

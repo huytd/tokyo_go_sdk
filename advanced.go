@@ -32,6 +32,24 @@ func (c *Client) GetFirstOtherPlayer() (Player, error) {
 	return Player{}, errors.New("Don't find anyone, only me")
 }
 
+func (c *Client) GetClosestItem() (Item, float64, error) {
+	others := c.CurrentGameInfo.Items
+
+	shortestDistance := math.MaxFloat64
+	var closestItem *Item
+	for index := range others {
+		d := DistanceBetweenTwoPoints(c.CurrentPlayer.X, c.CurrentPlayer.Y, others[index].X, others[index].Y)
+		if d < shortestDistance {
+			closestItem = &others[index]
+			shortestDistance = d
+		}
+	}
+	if closestItem == nil {
+		return Item{}, 0, errors.New("Don't find anything, 0 item")
+	}
+	return *closestItem, shortestDistance, nil
+}
+
 // GetClosestPlayer returns player who is closest with our space ship
 func (c *Client) GetClosestPlayer() (Player, float64, error) {
 	others := c.GetOtherPlayers()
